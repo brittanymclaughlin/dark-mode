@@ -6,7 +6,8 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip
+  Tooltip,
+  Legend
 } from "recharts";
 
 const Chart = ({ sparklineData }) => {
@@ -27,11 +28,12 @@ const Chart = ({ sparklineData }) => {
     .filter(data => data);
 
   return (
-    <LineChart width={1100} height={300} data={formattedData}>
-      <Line type="monotone" dataKey="value" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+    <LineChart width={800} height={600} data={formattedData}>
+      <Line type="linear" dot={{stroke:'black',fill:'white'}} legendType="star" dataKey="value" stroke="#ff3399" />
+      <CartesianGrid stroke="#ccc" strokeDasharray="5 10" />
       <XAxis dataKey="date" interval={3} />
       <YAxis />
+      <Legend  width={100} wrapperStyle={{ top: 150, right: 20, backgroundColor: '#aa9999', border: '1px solid black', borderRadius: 5, lineHeight: '40px' }} />
       <Tooltip />
     </LineChart>
   );
